@@ -1,0 +1,14 @@
+<app-search-employee (update)='filterEmployees($event)'></app-search-employee>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-3" *ngFor="let employee of filteredEmployees" >
+      <div 
+        class="employee"
+        routerLink="/employee-details/{{ employee.id }}">
+        <img class="img-fluid rounded-circle" src="{{ employee.mediumThumbUrl }}" alt="{{ employee.firstName }}">
+        <h5>{{ employee.firstName }} {{ employee.lastName }}</h5>
+      </div>
+    </div>
+  </div>
+</div>

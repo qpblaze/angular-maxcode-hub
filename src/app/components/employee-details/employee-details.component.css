@@ -1,0 +1,41 @@
+.employee img {
+    margin: 40px 0;
+
+    box-shadow:
+        0 4px 64px 0 rgba(0,0,0,0.12),
+        0 2px 64px 0 rgba(0,0,0,0.08);
+}
+
+.team {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.skill {
+    background-color: #eee;
+    margin: 5px;
+    padding: 7px 15px;
+    border-radius: 5px;
+}
+
+.skill:hover {
+    cursor: pointer;
+}
+
+.skill img {
+    width: 30px;
+    margin-right: 10px;
+    display: inline;
+}
+
+.skill p {
+    display: inline;
+}
+
+.no-skills h2 {
+    margin-top: 20px;
+    color: #2ea9e0;
+}

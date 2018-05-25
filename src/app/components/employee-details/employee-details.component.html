@@ -1,0 +1,29 @@
+<div class="container" *ngIf="employee">
+    <div class="row justify-content-center">
+      <div class="col-md-3" >
+        <div class="employee text-center">
+          <img class="img-fluid rounded-circle" src="{{ employee.mediumThumbUrl }}" alt="{{ employee.firstName }}">
+          <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
+          <p>{{ employee.jobTitle }}</p>
+          <div class="team" [ngStyle]="{'background-color': ('#' + employee.team.color)}"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center m-3">
+      <div 
+        class="text-center"
+        *ngFor="let skill of employee.skills">
+        <div 
+          class="skill"
+          routerLink='/employees/{{skill.id}}'>
+          <img src="{{ skill.iconUrl }}" alt="{{ skill.name }}">
+          <p>{{ skill.name }}</p>
+        </div>
+      </div>
+      <div *ngIf="employee.skills.length === 0">
+        <div class="no-skills">
+          <h2>No skills to show...</h2>
+        </div>
+      </div>
+    </div>
+</div>

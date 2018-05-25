@@ -1,0 +1,16 @@
+<app-search-skill (update)='filterSkills($event)'></app-search-skill>
+
+<div class="container">
+  <div class="row justify-content-center">
+      <div 
+        class="col-md-3"
+        *ngFor="let skill of filteredSkills">
+      <div 
+        class="skill"
+        routerLink="/employees/{{ skill.id }}">
+        <img class="img-fluid" src="{{ skill.iconUrl }}" alt="{{ skill.name }}" >
+        <h5>{{ skill.name }}</h5>
+      </div>
+    </div>
+  </div>
+</div>
