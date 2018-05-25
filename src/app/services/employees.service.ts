@@ -10,7 +10,7 @@ import { Employee } from '../models/employee';
 })
 
 export class EmployeesService {
-  public cahedEmployees: Employee[];
+  private cahedEmployees: Employee[];
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,10 @@ export class EmployeesService {
   }
 
   async getEmployees(): Promise<Employee[]> {
-    console.log(this.cahedEmployees);
+    if (this.cahedEmployees) {
+      return this.cahedEmployees;
+    }
+
     const employees: Employee[] = await this.http.get<Employee[]>(environment.apiUrl + '/api/employees').toPromise();
     employees.forEach(e => this.fixEmployeeProfilePicture(e));
 

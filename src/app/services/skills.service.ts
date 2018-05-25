@@ -10,6 +10,7 @@ import { Skill } from '../models/skill';
 })
 
 export class SkillsService {
+  private cachedSkills: Skill[];
 
   constructor(private http: HttpClient) { }
 
@@ -18,10 +19,14 @@ export class SkillsService {
   }
 
   async getSkills(): Promise<Skill[]> {
-    const skills: Skill[] = await this.http.get<Skill[]>(environment.apiUrl + '/api/skills').toPromise();
+    if (this.cachedSkills) {
+      return this.cachedSkills;
+    }
 
+    const skills: Skill[] = await this.http.get<Skill[]>(environment.apiUrl + '/api/skills').toPromise();
     skills.forEach(s => this.fixSkillIcon(s));
 
+    this.cachedSkills = skills;
     return skills;
   }
 }
